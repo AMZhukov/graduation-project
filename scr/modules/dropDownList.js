@@ -9,26 +9,26 @@ const handlerTarget = (element) => {
     }
 };
 
-const viewDropList = () => {
-    const button = document.querySelector('.clubs-list'),
-        ulList = button.querySelector('ul');
+const viewDropList = (elem, parentClass) => {
+    const button = document.querySelector(parentClass),
+        element = button.querySelector(elem);
 
     body.addEventListener('click', (event) => {
         let target = event.target;
         // console.log(target);
         // console.log(ulList);
         // console.log(event);
-        if (target.closest('.clubs-list')) {
-            handlerTarget(ulList);
+        if (target.closest(parentClass)) {
+            handlerTarget(element);
             // } else if (target.closest('.close-btn')) { // Это для кнопки закрыть или что-нибудь в этом роде
             //     handlerMenu(); //menu.style.display = 'none';
             // } else if (target.tagName === 'A' && target.closest('.active-menu')) {
             //     handlerMenu(); //menu.style.display = 'none';
-        } else if (!target.closest('.clubs-list') && ulList.style.display === 'block') {
-            handlerTarget(ulList);
+        } else if (!target.closest(parentClass) && element.style.display === 'block') {
+            handlerTarget(element);
         }
     });
 };
 
-viewDropList();
+viewDropList('ul', '.clubs-list');
 
