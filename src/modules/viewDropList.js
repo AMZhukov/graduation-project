@@ -30,5 +30,5 @@ const viewDropList = (elem, parentClass) => {
     });
 };
 
-viewDropList('ul', '.clubs-list');
+export default viewDropList;
 
