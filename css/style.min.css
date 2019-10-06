@@ -1976,9 +1976,9 @@ footer .footer-bottom .right .socials .social-icon:hover a {
     padding: 5px;
     height: 45px;
     border-radius: 22px;
-    border: 1px solid #ffd11a;
+    /*border: 1px solid #ffd11a;*/
     padding-left: 18px;
-    border: none
+    /*border: none*/
 }
 
 .popup .form-content textarea {
