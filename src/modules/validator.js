@@ -20,6 +20,10 @@ class Validator{
             if (this.error.size) {
                 e.preventDefault();
             }
+            console.log(this.form);
+            if (this.getAttribute("type") === 'checkbox' && !this.checked){
+                e.preventDefault();
+            }
         });
     }
 
