@@ -32,6 +32,9 @@ class Validator{
                 return true;
             },
             pattern(elem, pattern){
+                if (elem.getAttribute("type") === 'checkbox'){
+                    return elem.checked;
+                }
                 return pattern.test(elem.value);
             }
         };
@@ -68,24 +71,31 @@ class Validator{
         const errorDiv = document.createElement('div');
         errorDiv.textContent = `Ошибка в этом поле`;
         errorDiv.classList.add('validator-error');
+        if (elem.nextElementSibling){
+            elem = elem.nextElementSibling;
+        }
         elem.insertAdjacentElement('afterend', errorDiv);
     }
     showSuccess(elem){
         elem.classList.remove('error');
         elem.classList.add('success');
+        console.log(elem);
+        //console.log (elem.nextElementSibling.tagName);
+        if (elem.nextElementSibling && elem.nextElementSibling.tagName == 'LABEL') elem = elem.nextElementSibling;
+        console.log(elem);
         if (elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')){
+            console.log(elem);
             elem.nextElementSibling.remove();
-
         }
     }
     applyStyle(){
         const style = document.createElement('style');
         style.textContent = `
             input.success {
-                border: 2px solid yellow
+                border: 2px solid purple
             }
             input.error {
-                border: 2px solid red
+                border: 3px solid red
             }
             .validator-error {
             font-size: 12px;
@@ -105,6 +115,9 @@ class Validator{
         if (!this.pattern.nameAndText) {
             this.pattern.nameAndText = (/^[А-ЯЁ ]*$/i); //форма для только русских слов с пробелами
         }
+        if (!this.pattern.check1) {
+            this.pattern.check1 = 'checked'; //данную форму можно не заполнять, т.к. алгоритм сам определит checkbox
+        }
     }
 }
 
@@ -119,67 +132,73 @@ const  valid1 = new Validator ({
             ['notEmpty'],
             ['pattern', 'phone']
         ],
+        // 'form1-email': [
+        //     ['notEmpty'],
+        //     ['pattern', 'email']
+        // ],
         'callback_form1-name': [
             ['notEmpty'],
             ['pattern', 'nameAndText']
         ],
-        // 'check':[
-        //     ['notEmpty'],
-        // ],
+        'check': [
+            ['notEmpty'],
+            ['pattern', 'check1'] //данную форму можно не заполнять, т.к. алгоритм сам определит checkbox
+        ],
     }
 });
+
 valid1.init();
 
-// const  valid2 = new Validator ({
-//     selector: '#form2',
-//     pattern: {},
-//     method: {
-//         'form2-phone': [
-//             ['notEmpty'],
-//             ['pattern', 'phone']
-//         ],
-//         'form2-email': [
-//             ['notEmpty'],
-//             ['pattern', 'email']
-//         ],
-//         'form2-name': [
-//             ['notEmpty'],
-//             ['pattern', 'nameAndText']
-//         ],
-//         'form2-message': [
-//             ['notEmpty'],
-//             ['pattern', 'nameAndText']
-//         ],
-//     }
-// });
-// valid2.init();
-//
-// const  valid3 = new Validator ({
-//     selector: '#form3',
-//     pattern: {},
-//     method: {
-//         'form3-phone': [
-//             ['notEmpty'],
-//             ['pattern', 'phone']
-//         ],
-//         'form3-email': [
-//             ['notEmpty'],
-//             ['pattern', 'email']
-//         ],
-//         'form3-name': [
-//             ['notEmpty'],
-//             ['pattern', 'nameAndText']
-//         ],
-//
-//     }
-// });
-// valid3.init();
+const  valid2 = new Validator ({
+    selector: '#form2',
+    pattern: {
+        // phone: /^\+380\d{7}$/,
+        // zip: /\d{5,6}/
+    },
+    method: {
+        'callback_form2-phone': [
+            ['notEmpty'],
+            ['pattern', 'phone']
+        ],
+        // 'form1-email': [
+        //     ['notEmpty'],
+        //     ['pattern', 'email']
+        // ],
+        'callback_form2-name': [
+            ['notEmpty'],
+            ['pattern', 'nameAndText']
+        ],
+        'check2': [
+            ['notEmpty'],
+            ['pattern', 'check2'] //данную форму можно не заполнять, т.к. алгоритм сам определит checkbox
+        ],
+    }
+});
+valid2.init();
 
-
-
-
-
-
-
-
-
+const  valid3 = new Validator ({
+    selector: '#banner-form',
+    pattern: {
+        // phone: /^\+380\d{7}$/,
+        // zip: /\d{5,6}/
+    },
+    method: {
+        'phone1': [
+            ['notEmpty'],
+            ['pattern', 'phone']
+        ],
+        // 'form1-email': [
+        //     ['notEmpty'],
+        //     ['pattern', 'email']
+        // ],
+        'name1': [
+            ['notEmpty'],
+            ['pattern', 'nameAndText']
+        ],
+        'check1': [
+            ['notEmpty'],
+            ['pattern', 'check2'] //данную форму можно не заполнять, т.к. алгоритм сам определит checkbox
+        ],
+    }
+});
+valid3.init();

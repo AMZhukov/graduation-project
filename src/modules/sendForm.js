@@ -3,7 +3,7 @@ const sendForm = (id) => {
     const errorMessage = 'Что то пошло не так',
         loadMessage = 'Загрузка...',
         successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
-    const form = document.getElementById(id);
+    const form = document.querySelector(id);
     const button = form.querySelector("button");
 
     const blockedButton = () => {
@@ -25,8 +25,8 @@ const sendForm = (id) => {
 
     const statusMessage = document.createElement('div');
 
-    if (id === 'form3') statusMessage.style.cssText = 'font-size: 2rem; color: white;';
-    else statusMessage.style.cssText = 'font-size: 2rem;';
+    //if (id === '#form1') statusMessage.style.cssText = 'font-size: 2rem; color: white;';
+    statusMessage.style.cssText = 'font-size: 2rem; color: white;';
 
 
 
@@ -47,9 +47,22 @@ const sendForm = (id) => {
                 if (respronce.status !== 200) {
                     throw new Error('status network not 200');
                 }
-                statusMessage.textContent = successMessage; form.reset();
+                statusMessage.textContent = successMessage;
+                form.reset();
             })
-            .catch(error => {statusMessage.textContent = errorMessage; console.error(error);});
+            .catch(error => {
+                statusMessage.textContent = errorMessage;
+                console.error(error);
+            })
+            .finally(() => {
+                let clear = form.querySelectorAll('p');
+                for (let i = 0; i < clear.length; i++) {
+                    clear[i].style.display = 'none';
+                }
+                let clear1 =form.querySelector('button');
+                clear1.style.display = 'none';
+
+            });
     });
 
     const postData = (body) => {
@@ -82,3 +95,4 @@ const sendForm = (id) => {
     // };
 };
 export default sendForm;
+//sendForm('#form1');

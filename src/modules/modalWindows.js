@@ -8,12 +8,16 @@ const handlerTarget = (element) => {
     }
 };
 
-const modalWindows = (buttonStart, elem, buttonClose, windowClass) => {
+const modalWindows = (buttonStart, elem, buttonClose, windowClass, hideStartButton) => {
     const element = document.querySelector(elem);
     document.addEventListener('click', (event) => {
         let target = event.target;
         if (target.closest(buttonStart)) {
             handlerTarget(element);
+            if (hideStartButton) {
+                const hideStartButtonClick = document.querySelector(hideStartButton);
+                hideStartButtonClick.style = 'display: none';
+            }
         } else if (target.closest(buttonClose) && element.style.display  === 'block' /*|| target.closest('.close_icon')*/) { // Это для кнопки ОК. В случае наличия крестика необходима кусочек раскомментировать
             handlerTarget(element);
             //} else if (target.tagName === 'A' && target.closest('.active-menu')) {
@@ -22,6 +26,7 @@ const modalWindows = (buttonStart, elem, buttonClose, windowClass) => {
             handlerTarget(element);
         }
     });
+
 };
 
 export default modalWindows;
