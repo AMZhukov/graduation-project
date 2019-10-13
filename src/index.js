@@ -2,6 +2,8 @@
 import modalWindows from './modules/modalWindows';
 import viewDropList from './modules/viewDropList';
 import sendForm from './modules/sendForm';
+import createDots from './modules/createDots';
+import slider from './modules/slider';
 //import checkSquare from './modules/validatorSquare';
 
 
@@ -14,4 +16,6 @@ modalWindows( '.fixed-gift', '#gift', '.close-btn', '.form-content', '.fixed-gif
 sendForm('#form1');
 sendForm('#banner-form');
 sendForm('#form2');
+createDots();
+slider(3000);
 

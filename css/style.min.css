@@ -1192,6 +1192,8 @@ nav.popup-menu .close-menu-btn img {
     font-size: 36px
 }
 
+
+
 .slider-dots {
     position: absolute;
     bottom: 50px;
@@ -1417,6 +1419,8 @@ nav.popup-menu .close-menu-btn img {
 }
 
 #gallery .gallery-slider {
+    position: relative;
+    height: 404.45px;
     padding-left: 75px;
     padding-right: 75px;
     max-width: 900px;
@@ -1426,7 +1430,8 @@ nav.popup-menu .close-menu-btn img {
 
 #gallery .gallery-slider .slide {
     margin: 0 auto !important;
-    width: 100%
+    /*width: 100%*/
+
 }
 
 #gallery .gallery-slider .slider-arrow {
@@ -2458,4 +2463,113 @@ p.personal-data input[type=checkbox]:checked + label:before {
     .slider-dots {
         bottom: 30px
     }
+}
+
+.gallery-dots {
+    position: relative;
+    bottom: 60px;
+    /*width: 100%;*/
+    margin: 0 auto;
+    margin-top: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    z-index: 5; }
+.gallery-dots {
+    position: absolute;
+    bottom: 5%;
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    z-index: 5;
+}
+.gallery-dots .dot {
+    cursor: pointer;
+    height: 4px;
+    width: 25px;
+    background-color: #FFFFFF;
+    margin: 0 10px;
+    display: inline-block;
+    -webkit-transition: background-color, -webkit-transform 0.4s ease;
+    transition: background-color, -webkit-transform 0.4s ease;
+    transition: background-color, transform 0.4s ease;
+    transition: background-color, transform 0.4s ease, -webkit-transform 0.4s ease; }
+.gallery-dots .dot-active {
+    background-color: #FFD200;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+.gallery-dots .dot:hover {
+    background-color: #FFD200;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+
+.portfolio-content__slide {
+    position: absolute;
+
+    opacity: 0;
+    -webkit-transition: opacity 1.9s ease;
+    transition: opacity 1.9s ease;
+}
+
+
+.gallery-item-active {
+    position: absolute;
+    opacity: 1;
+    -webkit-transition: opacity 1.9s ease;
+    transition: opacity 1.9s ease;
+}
+
+.slider-btn {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-repeat: no-repeat;
+    background-size: 34px;
+    border-radius: 50%;
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease; }
+.slider-btn.prev {
+    left: 20px;
+    background-image: url("../images/icons/left-arrow.svg");
+    background-position: 25% 50%; }
+.slider-btn.next {
+    right: 20px;
+    background-image: url("../images/icons/right-arrow.svg");
+    background-position: 75% 50%; }
+.slider-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease; }
+
+@media (max-width: 690px) {
+    .slider-btn {
+        width: 40px;
+        height: 40px; }
+    .slider-btn.next {
+        right: 10px; }
+    .slider-btn.prev {
+        left: 10px; }
+}
+
+@media (max-width: 448px) {
+    .portfolio-btn {
+        width: 35px;
+        height: 35px; }
+    .portfolio-btn.next {
+        right: 5px; }
+    .portfolio-btn.prev {
+        left: 5px; }
 }
