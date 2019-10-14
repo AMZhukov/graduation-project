@@ -4,6 +4,7 @@ import viewDropList from './modules/viewDropList';
 import sendForm from './modules/sendForm';
 import createDots from './modules/createDots';
 import slider from './modules/slider';
+import returnTop from './modules/scrollToFirstPage';
 //import checkSquare from './modules/validatorSquare';
 
 
@@ -18,4 +19,4 @@ sendForm('#banner-form');
 sendForm('#form2');
 createDots();
 slider(3000);
-
+returnTop();
