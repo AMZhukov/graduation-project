@@ -10,7 +10,6 @@ const toggleMenu = () => {
         // console.log(getComputedStyle(menu, null).display === 'none');
         if (getComputedStyle(menu, null).display === 'none'){
             menu.style.display = "flex";
-            console.log(getComputedStyle(menu, null).display);
         }
         else menu.style.display = "none";
         /*if(!menu.style.transform || menu.style.transform === `translate(-100%)`) {
