@@ -1,5 +1,5 @@
-const slider = (nameSlider, timeTimer) => {
-    const btn = document.querySelectorAll('.slider-btn'),
+const sliderDisplayNoneBlock = (nameSlider, timeTimer) => {
+    const btn = document.querySelectorAll('.slider-btn'), // slider buttons, to scroll the slider
         slider = document.querySelector(nameSlider),
         slide = slider.querySelectorAll('.slide'),
         dot = document.querySelectorAll('.dot');
@@ -8,9 +8,15 @@ const slider = (nameSlider, timeTimer) => {
 
     const prevSlide = (elem, index, strClass) => {
         elem[index].classList.remove(strClass);
+        if (elem === slide) {
+            elem[index].style.display = 'none';
+        }
     };
     const nextSlide = (elem, index, strClass) => {
         elem[index].classList.add(strClass);
+        if (elem === slide) {
+            elem[index].style.display = 'flex';
+        }
     };
     const autoPlaySlide = () => {
         prevSlide(slide, currentSlide, 'gallery-item-active');
@@ -29,7 +35,6 @@ const slider = (nameSlider, timeTimer) => {
 
     const stopSlide = () => {
         clearInterval(interval);
-
     };
 
     slider.addEventListener('click', (event) => {
@@ -77,5 +82,5 @@ const slider = (nameSlider, timeTimer) => {
     });
     startSlide(timeTimer);
 };
-export default slider;
+export default sliderDisplayNoneBlock;
 // slider(30000);
